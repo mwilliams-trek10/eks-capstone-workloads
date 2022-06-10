@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstone-backend-test
+  name: capstone-backend-deployment
   labels:
-    app: capstone-backend-test
-  namespace: default
+    app: capstone-backend
+  namespace: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: capstone-backend-test
+      app: capstone-backend
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -18,18 +18,18 @@ spec:
   template:
     metadata:
       labels:
-        app: capstone-backend-test
+        app: capstone-backend
     spec:
       containers:
       - image: 085519708244.dkr.ecr.us-east-2.amazonaws.com/backend_service:v0.1.0
         imagePullPolicy: Always
-        name: capstone-backend-test
+        name: capstone-backend
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           hostPort: 8080
           protocol: TCP
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
-          - name: applicationUrl
-            value: "http://+:8080;https://+:8081"
+          #- name: applicationUrl
+            #value: "http://+:8080;https://+:8081"
