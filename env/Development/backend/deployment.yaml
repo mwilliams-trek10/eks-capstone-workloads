@@ -20,8 +20,9 @@ spec:
       labels:
         app: capstone-backend
     spec:
+      serviceAccountName: backend-team-sa
       containers:
-      - image: 085519708244.dkr.ecr.us-east-2.amazonaws.com/backend_service:v0.1.0
+      - image: 085519708244.dkr.ecr.us-east-2.amazonaws.com/backend_service:v0.1.3
         imagePullPolicy: Always
         name: capstone-backend
         ports:

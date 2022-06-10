@@ -32,7 +32,7 @@ spec:
         #- name: ASPNETCORE_ENVIRONMENT
         #  value: Development
         - name: BACKEND_SERVICE_URI
-          value: http://capstone-backend-service:7070
+          value: http://capstone-backend-service.backend.svc.cluster.local:7070
           #value: "http://172.20.171.71"
         #- name: applicationUrl
           #value: "http://+:80;https://+:443"
