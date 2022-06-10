@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-frontend-test
+  labels:
+    app: capstone-frontend-test
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: capstone-frontend-test
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: capstone-frontend-test
+    spec:
+      containers:
+      - image: 085519708244.dkr.ecr.us-east-2.amazonaws.com/frontend_service:v0.1.0
+        imagePullPolicy: Always
+        name: capstone-frontend-test
+        ports:
+        - containerPort: 80
+          hostPort: 80
+          protocol: TCP
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: BACKEND_SERVICE_URI
+          value: http://capstone-backend-test.default.svc.cluster.local:8080
+          #value: "http://172.20.171.71"
+        #- name: applicationUrl
+          #value: "http://+:80;https://+:443"

@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: capstone-frontend-test
+  annotations:
+    # Ingress Core Settings
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    #alb.ingress.kubernetes.io/target-type: ip
+spec:
+  defaultBackend:
+    service:
+      name: capstone-frontend-test
+      port:
+        number: 80
+  # rules:
+  #   - http:
+  #       paths:
+  #         - path: /
+  #           pathType: Prefix
+  #           backend:
+  #             service:
+  #               name: capstone-frontend-test
+  #               port:
+  #                 number: 80
+  # rules:
+  #   - http:
+  #       paths:
+  #         - path: /frontend
+  #           pathType: Prefix
+  #           backend:
+  #             service:
+  #               name: capstone-frontend-test
+  #               port:
+  #                 number: 80
+  #         - path: /backend
+  #           pathType: Prefix
+  #           backend:
+  #             service:
+  #               name: capstone-backend-test
+  #               port:
+  #                 number: 80
+

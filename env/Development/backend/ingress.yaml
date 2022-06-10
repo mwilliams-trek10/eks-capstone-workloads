@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: capstone-backend-test
+  annotations:
+    # Ingress Core Settings
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/load-balancer-name: k8s-default-capstone-b08b3d1a10
+spec:
+  defaultBackend:
+    service:
+      name: capstone-backend-test
+      port:
+        number: 80

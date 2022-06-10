@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: capstone-backend-test
+  # annotations:
+  #     service.beta.kubernetes.io/aws-load-balancer-type: "alb"
+  #     service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+spec:
+  selector:
+    app: capstone-backend-test
+  #type: LoadBalancer
+  ports:
+   -  protocol: TCP
+      port: 8080
+      targetPort: 8080
