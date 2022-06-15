@@ -12,8 +12,8 @@ spec:
       app: capstone-backend
   strategy:
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxSurge: 200%
+      maxUnavailable: 100%
     type: RollingUpdate
   template:
     metadata:
@@ -32,5 +32,3 @@ spec:
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
-          #- name: applicationUrl
-            #value: "http://+:8080;https://+:8081"
